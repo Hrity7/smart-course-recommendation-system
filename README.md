@@ -13,6 +13,34 @@ An AI-powered platform for personalized course recommendations and skill-based l
 
 ## Screenshots
 
+## Screenshots
+
+### Homepage
+![Homepage](screenshots/overview.png)
+
+### Course Recommendations
+![Recommendations](screenshots/foryou.png)
+
+### YouTube Courses
+![AI Advisor](screenshots/youtubecourses.png)
+
+### Learning
+![AI Advisor](screenshots/learning.png)
+
+### Road Map
+![AI Advisor](screenshots/roadmap.png)
+
+### Skill Gaps
+![AI Advisor](screenshots/skillgaps.png)
+
+### Analytics
+![AI Advisor](screenshots/analytics.png)
+
+### Settings
+![AI Advisor](screenshots/settings.png)
+
+### Disclaimer
+![AI Advisor](screenshots/disclaimer.png)
 
 
 ## Features
