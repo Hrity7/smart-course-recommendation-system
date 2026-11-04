@@ -63,6 +63,28 @@ An AI-powered platform for personalized course recommendations and skill-based l
 | YouTube API | Learning video integration |
 | Python | Separate desktop application |
 
+
+## System Architecture
+
+The following diagram illustrates the interaction between
+the frontend, backend, recommendation logic, and external APIs.
+
+
+flowchart TD
+    A[User] --> B[React + TypeScript Frontend]
+    B --> C[Node.js + Express Backend]
+    C --> D[Recommendation Logic]
+    C --> E[Gemini API]
+    C --> F[YouTube Data API]
+    D --> G[Personalized Course Recommendations]
+    E --> H[AI Learning Assistance]
+    F --> I[YouTube Learning Resources]
+    G --> J[User Interface]
+    H --> J
+    I --> J
+
+
+
 ## Run Locally
 
 ### Prerequisites
