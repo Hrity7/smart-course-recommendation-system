@@ -1,0 +1,643 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --font-sans: "Nunito", "Quicksand", system-ui, -apple-system, sans-serif;
+  --font-display: "Quicksand", "Nunito", system-ui, -apple-system, sans-serif;
+
+  /* 1. Neutral Backgrounds & Surfaces */
+  --bg-canvas: #F3F5F8;
+  --bg-canvas-subtle: #EAEFF5;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F8FAFC;
+  --surface-inset: #EDF1F6;
+
+  /* 2. High-Contrast Typography Tokens (WCAG AA/AAA) */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+
+  /* Alias tokens used across components */
+  --cl-01-ink: var(--text-primary);
+  --cl-01-mut: var(--text-muted);
+  --cl-01-clay: var(--brand-primary);
+
+  /* 3. Primary Brand Color Tokens (Calm Professional Blue) */
+  --brand-primary: #2563EB;
+  --brand-primary-hover: #1D4ED8;
+  --brand-subtle: #EFF6FF;
+  --brand-ink: #1E40AF;
+
+  /* 4. Semantic State Tokens (Success, Warning, Error) */
+  --status-success: #059669;
+  --status-success-subtle: #ECFDF5;
+  --status-success-ink: #065F46;
+
+  --status-warning: #D97706;
+  --status-warning-subtle: #FFFBEB;
+  --status-warning-ink: #92400E;
+
+  --status-error: #DC2626;
+  --status-error-subtle: #FEF2F2;
+  --status-error-ink: #991B1B;
+
+  /* 5. Radii Tokens */
+  --clay-radius-xl: 32px;
+  --clay-radius-lg: 24px;
+  --clay-radius-md: 18px;
+  --clay-radius-pill: 9999px;
+
+  /* 6. Restrained Tactile Elevation Shadows */
+  --clay-shadow-card:
+    10px 12px 24px rgba(15, 23, 42, 0.06),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.9),
+    inset -4px -4px 10px rgba(15, 23, 42, 0.035);
+
+  --clay-shadow-card-hover:
+    14px 16px 28px rgba(15, 23, 42, 0.09),
+    inset 5px 5px 12px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 10px rgba(15, 23, 42, 0.045);
+
+  --clay-shadow-sm:
+    4px 6px 12px rgba(15, 23, 42, 0.055),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 5px rgba(15, 23, 42, 0.035);
+
+  --clay-shadow-btn:
+    6px 8px 16px rgba(15, 23, 42, 0.08),
+    inset 3px 3px 7px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 7px rgba(15, 23, 42, 0.05);
+
+  --clay-shadow-btn-hover:
+    8px 10px 20px rgba(15, 23, 42, 0.12),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.85),
+    inset -3px -3px 7px rgba(15, 23, 42, 0.06);
+
+  --clay-shadow-btn-active:
+    inset 4px 4px 9px rgba(15, 23, 42, 0.12),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.85),
+    1px 1px 4px rgba(15, 23, 42, 0.04);
+
+  --clay-shadow-inset:
+    inset 4px 4px 8px rgba(15, 23, 42, 0.075),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+/* ---------------- DARK MODE DESIGN TOKENS ---------------- */
+
+html.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-canvas: #0B1120;
+  --bg-canvas-subtle: #0F172A;
+  --surface-primary: #1E293B;
+  --surface-secondary: #293548;
+  --surface-inset: #0F172A;
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #E2E8F0;
+  --text-muted: #CBD5E1;
+
+  --cl-01-ink: #F8FAFC;
+  --cl-01-mut: #CBD5E1;
+  --cl-01-clay: #3B82F6;
+
+  --brand-primary: #3B82F6;
+  --brand-primary-hover: #2563EB;
+  --brand-subtle: #1E3A5F;
+  --brand-ink: #93C5FD;
+
+  --status-success: #10B981;
+  --status-success-subtle: #064E3B;
+  --status-success-ink: #6EE7B7;
+
+  --status-warning: #F59E0B;
+  --status-warning-subtle: #451A03;
+  --status-warning-ink: #FCD34D;
+
+  --status-error: #EF4444;
+  --status-error-subtle: #450A0A;
+  --status-error-ink: #FCA5A5;
+
+  --clay-shadow-card:
+    10px 14px 28px rgba(2, 6, 23, 0.55),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.08),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.45);
+
+  --clay-shadow-card-hover:
+    14px 18px 32px rgba(2, 6, 23, 0.68),
+    inset 2px 2px 7px rgba(255, 255, 255, 0.12),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.5);
+
+  --clay-shadow-sm:
+    4px 6px 14px rgba(2, 6, 23, 0.45),
+    inset 1px 1px 4px rgba(255, 255, 255, 0.08),
+    inset -2px -2px 5px rgba(2, 6, 23, 0.4);
+
+  --clay-shadow-btn:
+    6px 8px 18px rgba(2, 6, 23, 0.5),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+    inset -2px -2px 6px rgba(2, 6, 23, 0.45);
+
+  --clay-shadow-btn-hover:
+    8px 10px 22px rgba(2, 6, 23, 0.65),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.14),
+    inset -2px -2px 6px rgba(2, 6, 23, 0.5);
+
+  --clay-shadow-btn-active:
+    inset 4px 4px 9px rgba(2, 6, 23, 0.65),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+    1px 1px 4px rgba(2, 6, 23, 0.3);
+
+  --clay-shadow-inset:
+    inset 4px 4px 9px rgba(2, 6, 23, 0.65),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: linear-gradient(145deg, var(--bg-canvas) 0%, var(--bg-canvas-subtle) 100%);
+  min-height: 100vh;
+  transition: background 220ms ease, color 220ms ease;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+}
+
+select option {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+}
+
+/* ---------------- SURFACES & CARDS ---------------- */
+
+.clay-card {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-card);
+  border: none;
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 220ms ease,
+              background-color 220ms ease;
+}
+
+.clay-card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--clay-shadow-card-hover);
+}
+
+.clay-panel-xl {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+  border-radius: var(--clay-radius-xl);
+  box-shadow: var(--clay-shadow-card);
+  border: none;
+  transition: background-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* Semantic & Brand Surface Modifiers */
+.surface-neutral {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.surface-brand {
+  background-color: var(--brand-subtle);
+  color: var(--text-primary);
+  box-shadow:
+    10px 12px 24px rgba(37, 99, 235, 0.07),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.88),
+    inset -4px -4px 10px rgba(37, 99, 235, 0.04);
+}
+
+html.dark .surface-brand {
+  box-shadow:
+    10px 14px 28px rgba(2, 6, 23, 0.55),
+    inset 2px 2px 6px rgba(147, 197, 253, 0.16),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.45);
+}
+
+.surface-success {
+  background-color: var(--status-success-subtle);
+  color: var(--text-primary);
+  box-shadow:
+    10px 12px 24px rgba(5, 150, 105, 0.07),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.88),
+    inset -4px -4px 10px rgba(5, 150, 105, 0.04);
+}
+
+html.dark .surface-success {
+  box-shadow:
+    10px 14px 28px rgba(2, 6, 23, 0.55),
+    inset 2px 2px 6px rgba(110, 231, 183, 0.16),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.45);
+}
+
+.surface-warning {
+  background-color: var(--status-warning-subtle);
+  color: var(--text-primary);
+  box-shadow:
+    10px 12px 24px rgba(217, 119, 6, 0.07),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.88),
+    inset -4px -4px 10px rgba(217, 119, 6, 0.04);
+}
+
+html.dark .surface-warning {
+  box-shadow:
+    10px 14px 28px rgba(2, 6, 23, 0.55),
+    inset 2px 2px 6px rgba(252, 211, 77, 0.16),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.45);
+}
+
+.surface-error {
+  background-color: var(--status-error-subtle);
+  color: var(--text-primary);
+  box-shadow:
+    10px 12px 24px rgba(220, 38, 38, 0.07),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.88),
+    inset -4px -4px 10px rgba(220, 38, 38, 0.04);
+}
+
+html.dark .surface-error {
+  box-shadow:
+    10px 14px 28px rgba(2, 6, 23, 0.55),
+    inset 2px 2px 6px rgba(252, 165, 165, 0.16),
+    inset -3px -3px 8px rgba(2, 6, 23, 0.45);
+}
+
+/* Map legacy decorative classes to restrained semantic/neutral tokens */
+.clay-blue,
+.clay-lavender,
+.clay-peach {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-card);
+}
+
+.clay-mint {
+  background-color: var(--status-success-subtle);
+  color: var(--status-success-ink);
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.clay-butter {
+  background-color: var(--status-warning-subtle);
+  color: var(--status-warning-ink);
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.clay-pink {
+  background-color: var(--status-error-subtle);
+  color: var(--status-error-ink);
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.clay-btn {
+  border-radius: var(--clay-radius-pill);
+  font-weight: 700;
+  border: none;
+  box-shadow: var(--clay-shadow-btn);
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 200ms ease,
+              background-color 180ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.clay-btn:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+  box-shadow: var(--clay-shadow-btn-hover);
+}
+
+.clay-btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: var(--clay-shadow-btn-active);
+}
+
+.clay-btn:focus-visible {
+  outline: 3px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.clay-btn-primary,
+.clay-btn-lavender,
+.clay-btn-blue {
+  background: linear-gradient(145deg, #3B82F6, var(--brand-primary));
+  color: #FFFFFF !important;
+  box-shadow:
+    6px 8px 18px rgba(37, 99, 235, 0.25),
+    inset 3px 3px 7px rgba(255, 255, 255, 0.35),
+    inset -3px -3px 7px rgba(29, 78, 216, 0.25);
+}
+
+.clay-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(145deg, #2563EB, var(--brand-primary-hover));
+}
+
+.clay-btn-soft {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.clay-btn-soft:hover:not(:disabled) {
+  background-color: var(--surface-inset);
+  color: var(--text-primary);
+}
+
+.clay-btn-mint {
+  background-color: var(--status-success-subtle);
+  color: var(--status-success-ink);
+  box-shadow:
+    5px 6px 14px rgba(5, 150, 105, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(5, 150, 105, 0.08);
+}
+
+html.dark .clay-btn-mint {
+  box-shadow:
+    5px 6px 14px rgba(2, 6, 23, 0.45),
+    inset 1px 1px 4px rgba(110, 231, 183, 0.15),
+    inset -2px -2px 5px rgba(2, 6, 23, 0.4);
+}
+
+.clay-btn-butter {
+  background-color: var(--status-warning-subtle);
+  color: var(--status-warning-ink);
+}
+
+.clay-btn-pink {
+  background-color: var(--status-error-subtle);
+  color: var(--status-error-ink);
+}
+
+/* ---------------- INSET / PRESSED CONTROLS ---------------- */
+
+.clay-inset {
+  background-color: var(--surface-inset);
+  border-radius: 16px;
+  box-shadow: var(--clay-shadow-inset);
+  border: none;
+  color: var(--text-primary);
+  transition: box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.clay-inset:focus {
+  outline: none;
+  background-color: var(--surface-primary);
+  box-shadow:
+    var(--clay-shadow-inset),
+    0 0 0 2.5px rgba(59, 130, 246, 0.45);
+}
+
+/* ---------------- BADGES & TAGS ---------------- */
+
+.clay-tag {
+  border-radius: var(--clay-radius-pill);
+  box-shadow: var(--clay-shadow-sm);
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: none;
+}
+
+.badge-neutral {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.badge-brand {
+  background-color: var(--brand-subtle);
+  color: var(--brand-ink);
+}
+
+.badge-success {
+  background-color: var(--status-success-subtle);
+  color: var(--status-success-ink);
+}
+
+.badge-warning {
+  background-color: var(--status-warning-subtle);
+  color: var(--status-warning-ink);
+}
+
+.badge-error {
+  background-color: var(--status-error-subtle);
+  color: var(--status-error-ink);
+}
+
+/* ---------------- PROGRESS TRACKS ---------------- */
+
+.clay-progress-track {
+  position: relative;
+  background-color: var(--surface-inset);
+  border-radius: var(--clay-radius-pill);
+  box-shadow: var(--clay-shadow-inset);
+  padding: 2px;
+  overflow: hidden;
+}
+
+.clay-progress-fill {
+  display: block;
+  height: 100%;
+  min-height: 6px;
+  border-radius: var(--clay-radius-pill);
+  background: linear-gradient(90deg, #3B82F6 0%, var(--brand-primary) 100%);
+  box-shadow:
+    1px 1px 4px rgba(37, 99, 235, 0.35),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.45);
+  transition: width 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-progress-fill-success {
+  display: block;
+  height: 100%;
+  min-height: 6px;
+  border-radius: var(--clay-radius-pill);
+  background: linear-gradient(90deg, #10B981 0%, var(--status-success) 100%);
+  box-shadow:
+    1px 1px 4px rgba(5, 150, 105, 0.35),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.45);
+  transition: width 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------------- ICON CONTAINERS ---------------- */
+
+.clay-icon-bubble {
+  border-radius: 16px;
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  box-shadow: var(--clay-shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------------- DARK MODE HIGH-SPECIFICITY OVERRIDES ---------------- */
+
+html.dark .text-\[\#0F172A\],
+html.dark .text-\[\#1E243B\] {
+  color: var(--text-primary) !important;
+}
+
+html.dark .text-\[\#334155\],
+html.dark .text-\[\#475569\] {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .text-\[\#64748B\] {
+  color: var(--text-muted) !important;
+}
+
+html.dark .placeholder\:text-\[\#64748B\]::placeholder {
+  color: var(--text-muted) !important;
+}
+
+html.dark .text-\[\#1E40AF\],
+html.dark .text-\[\#2563EB\] {
+  color: var(--brand-ink) !important;
+}
+
+html.dark .text-\[\#059669\],
+html.dark .text-\[\#065F46\] {
+  color: var(--status-success-ink) !important;
+}
+
+html.dark .text-\[\#D97706\],
+html.dark .text-\[\#92400E\] {
+  color: var(--status-warning-ink) !important;
+}
+
+html.dark .text-\[\#DC2626\],
+html.dark .text-\[\#991B1B\] {
+  color: var(--status-error-ink) !important;
+}
+
+html.dark .bg-white,
+html.dark .bg-white\/85,
+html.dark .bg-white\/80,
+html.dark .bg-white\/75,
+html.dark .bg-white\/65,
+html.dark .bg-\[\#F8FAFC\] {
+  background-color: var(--surface-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark .hover\:bg-white:hover,
+html.dark .hover\:bg-\[\#F8FAFC\]:hover {
+  background-color: var(--surface-inset) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark .hover\:text-\[\#0F172A\]:hover {
+  color: var(--text-primary) !important;
+}
+
+html.dark .border-slate-200\/70 {
+  border-color: rgba(148, 163, 184, 0.25) !important;
+}
+
+/* ---------------- MOTION ---------------- */
+
+@keyframes clayFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.clay-float {
+  animation: clayFloat 4.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .clay-card-interactive:hover,
+  .clay-btn:hover:not(:disabled),
+  .clay-btn:active:not(:disabled) {
+    transform: none !important;
+  }
+}
+
+/* Custom Range Input */
+input[type="range"].clay-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  background: var(--surface-inset);
+  border-radius: 9999px;
+  box-shadow: var(--clay-shadow-inset);
+}
+
+input[type="range"].clay-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3B82F6, var(--brand-primary));
+  box-shadow:
+    3px 3px 8px rgba(15, 23, 42, 0.25),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: transform 160ms ease;
+}
+
+input[type="range"].clay-range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Clay-textured custom scrollbar for modals and panels */
+.clay-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) var(--surface-inset);
+}
+
+.clay-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.clay-scrollbar::-webkit-scrollbar-track {
+  background: var(--surface-inset);
+  border-radius: 9999px;
+  box-shadow: var(--clay-shadow-inset);
+  margin: 18px 0;
+}
+
+.clay-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--surface-secondary);
+  border-radius: 9999px;
+  border: 2px solid var(--surface-inset);
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.55),
+    1px 1px 3px rgba(15, 23, 42, 0.18);
+}
+
+.clay-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-soft);
+}
+

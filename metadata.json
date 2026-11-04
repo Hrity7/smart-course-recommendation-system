@@ -1,0 +1,6 @@
+{
+  "name": "Smart Course Recommendation System",
+  "description": "AI-powered personalized online course discovery and skill roadmap system with hybrid recommendation filtering and career analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
